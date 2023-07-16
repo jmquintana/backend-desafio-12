@@ -13,10 +13,12 @@ export async function getProducts(req, res) {
 		lean: true,
 	};
 
-	user.isAdmin = user?.role === "admin";
+	if (!!user) {
+		user.isAdmin = user?.role === "admin";
 
-	if (user.cart)
-		user.cartCount = await cartsService.getCartCount(user.cart._id);
+		if (user.cart)
+			user.cartCount = await cartsService.getCartCount(user.cart._id);
+	}
 
 	if (category) {
 		filters.category = category;
