@@ -56,7 +56,7 @@ export async function editProductQuantity(req, res) {
 
 export async function addCart(req, res) {
 	const result = await cartsService.addCart();
-	return res.send({ status: "Success", result });
+	return res.send({ status: "Success", message: "Cart added", result });
 }
 
 export async function getCarts(req, res) {
@@ -81,7 +81,7 @@ export async function updateCart(req, res) {
 	const cartId = req.params.cid;
 	const products = req.body.products;
 	const result = await cartsManager.updateCart(cartId, products);
-	return res.send({ status: "Success", result });
+	return res.send({ status: "Success", message: "Cart updated", result });
 }
 
 export async function deleteProductFromCart(req, res) {
